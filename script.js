@@ -1,4 +1,4 @@
-// Your web app's Firebase configuration
+fire// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "FIREBASE_KEY_REMOVED",
   authDomain: "cynthiazolner-com.firebaseapp.com",
