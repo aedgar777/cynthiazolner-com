@@ -1,4 +1,4 @@
-// Wait for Firebase to initialize from hosting config
+
 let app;
 
 function initializeFirebase() {
@@ -22,7 +22,6 @@ function initializeFirebase() {
     });
 }
 
-// Initialize services after Firebase is ready
 async function initializeServices() {
     app = await initializeFirebase();
     const storage = firebase.storage();
@@ -30,7 +29,6 @@ async function initializeServices() {
     return { storage, storageRef };
 }
 
-// Load assets after services are initialized
 async function loadAssets(storageRef) {
     try {
         await Promise.all([
@@ -43,6 +41,26 @@ async function loadAssets(storageRef) {
     }
 }
 
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const app = firebase.app();
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+
+        // Load all assets
+        await Promise.all([
+            loadLogo(storageRef),
+            loadProfileImage(storageRef),
+            loadSpecialtyIcons(storageRef)
+        ]);
+
+        initializeFormHandling();
+        initializeSmoothScrolling();
+    } catch (error) {
+        console.error("Error initializing app:", error);
+    }
+});
 // Update asset loading functions to accept storageRef
 async function loadLogo(storageRef) {
     try {
@@ -78,12 +96,7 @@ async function loadSpecialtyIcons(storageRef) {
     }
 }
 
-// Initialize everything when the DOM is ready
-document.addEventListener('DOMContentLoaded', async () => {
-    const { storageRef } = await initializeServices();
-    await loadAssets(storageRef);
-
-    // Form handling
+function initializeFormHandling() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -91,8 +104,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Add form submission logic here
         });
     }
+}
 
-    // Smooth scrolling
+function initializeSmoothScrolling() {
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -102,4 +116,5 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     });
-});
+}
+
