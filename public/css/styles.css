@@ -4,7 +4,7 @@
     --accent-color: #B8D8D8;
     --text-color: #333;
     --light-bg: #F7F9FB;
-    --font-heading: 'Playfair Display', serif;
+    --font-heading: 'Lato', sans-serif;
     --font-body: 'Roboto', sans-serif;
 }
 
@@ -47,10 +47,21 @@ h2 {
     font-family: var(--font-heading);
 }
 
-/* Add styles for contact section */
 .contact {
     background: var(--light-bg);
 }
+
+.contact-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
 
 header {
     background: white;
@@ -89,8 +100,10 @@ nav a:hover {
 }
 
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(91, 195, 149, 0.3), rgba(91, 195, 149, 0.3));
+    min-height: fit-content;
+    padding: 120px 2rem 4rem;
+
+    background: linear-gradient(rgba(70, 150, 110, 0.85), rgba(70, 150, 110, 0.85));
     background-size: cover;
     background-position: center;
     display: flex;
@@ -98,14 +111,22 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     color: white;
-    padding-top: 80px;
+    padding-top: 120px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 60px;  
 }
 
 .hero-content h1 {
     font-family: var(--font-heading);
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 section {
@@ -114,15 +135,16 @@ section {
 
 .specialties {
     background: var(--light-bg);
+    padding: 5rem 2rem;
 }
 
 .specialties-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    padding: 2rem 0;
+    padding: 2rem;
 }
 
 .specialty-card {
@@ -135,6 +157,18 @@ section {
     transition: all 0.3s ease;
 }
 
+@media (max-width: 992px) {
+    .specialties-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .specialties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .specialty-card:hover {
     transform: translateY(-5px);
     border-color: var(--primary-color);
@@ -142,25 +176,54 @@ section {
 }
 
 .specialty-icon {
-    font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.about-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    height: 64px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.about-content img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(91, 195, 149, 0.1);
+.specialty-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
 }
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Added position relative */
+    z-index: 1;
+
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .profile-image {
+        width: 250px;
+        height: 250px;
+        margin: -30px auto 2rem;
+    }
+    
+    .hero {
+        margin-top: 50px;    
+        padding: 130px 1rem 3rem;
+    }
+}
+
+  
 
 .credentials {
     list-style: none;
@@ -220,8 +283,16 @@ button:hover {
     box-shadow: 0 4px 6px rgba(91, 195, 149, 0.2);
 }
 
+/* Update footer styles */
+footer {
+    text-align: center;
+    background: var(--light-bg);
+    padding: 2rem;
+}
+
 footer p {
     color: var(--text-color);
+    font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
