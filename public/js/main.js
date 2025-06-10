@@ -24,10 +24,37 @@ async function loadLogo() {
     }
 }
 
+async function loadProfileImage() {
+    try {
+        const profileRef = storageRef.child('pic2a(1).jpg');
+        const profileUrl = await profileRef.getDownloadURL();
+        document.querySelector('.profile-image img').src = profileUrl;
+    } catch (error) {
+        console.error("Error loading profile image:", error);
+    }
+}
+
+async function loadSpecialtyIcons() {
+    try {
+        const icons = document.querySelectorAll('.specialty-icon img');
+        
+        for (const icon of icons) {
+            const iconName = icon.dataset.icon;
+            const iconRef = storageRef.child(`${iconName}.png`);
+            const iconUrl = await iconRef.getDownloadURL();
+            icon.src = iconUrl;
+        }
+    } catch (error) {
+        console.error("Error loading specialty icons:", error);
+    }
+}
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     loadLogo();
-    
+     loadProfileImage();
+     loadSpecialtyIcons();
+});
     // Form handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -47,4 +74,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
+
+    
