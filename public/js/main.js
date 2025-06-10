@@ -58,7 +58,7 @@ async function loadSpecialtyIcons(storageRef) {
 
             console.log('Loading icon:', iconName);
 
-            const iconRef = storageRef.child(`${iconName}.png`);
+            const iconRef = storageRef.child(`${iconName}.jpg`);
             const iconUrl = await iconRef.getDownloadURL();
             icon.src = iconUrl;
         }
