@@ -1,5 +1,22 @@
 
-let app;
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Get the existing Firebase instance
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+        
+        console.log('Firebase initialized successfully');
+        
+        // Load assets
+        await loadAssets(storageRef);
+        
+        // Initialize UI handlers
+        initializeFormHandling();
+        initializeSmoothScrolling();
+    } catch (error) {
+        console.error("Error in initialization:", error);
+    }
+});
 
 async function loadAssets(storageRef) {
     try {
@@ -13,29 +30,6 @@ async function loadAssets(storageRef) {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', async () => {
-    document.addEventListener('DOMContentLoaded', async () => {
-    try {
-   
-        const app = firebase.app();
-        const storage = firebase.storage();
-        const storageRef = storage.ref();
-
-        await Promise.all([
-            loadLogo(storageRef),
-            loadProfileImage(storageRef),
-            loadSpecialtyIcons(storageRef)
-        ]);
-
-        initializeFormHandling();
-        initializeSmoothScrolling();
-    } catch (error) {
-        console.error("Error initializing app:", error);
-    }
-});
-});
-// Update asset loading functions to accept storageRef
 async function loadLogo(storageRef) {
     try {
         const logoRef = storageRef.child('android-chrome-512x512.avif');
