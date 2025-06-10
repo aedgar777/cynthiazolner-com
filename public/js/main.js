@@ -1,34 +1,6 @@
 
 let app;
 
-function initializeFirebase() {
-    return new Promise((resolve) => {
-        if (firebase.apps.length) {
-            resolve(firebase.apps[0]);
-            return;
-        }
-
-        const config = {
-            apiKey: "FIREBASE_KEY_REMOVED",
-            authDomain: "cynthiazolner-com.firebaseapp.com",
-            projectId: "cynthiazolner-com",
-            storageBucket: "cynthiazolner-com.firebasestorage.app",
-            messagingSenderId: "660825206837",
-            appId: "1:660825206837:web:31906827577a5bd1adc17c",
-            measurementId: "G-JK597RSP78"
-        };
-
-        resolve(firebase.initializeApp(config));
-    });
-}
-
-async function initializeServices() {
-    app = await initializeFirebase();
-    const storage = firebase.storage();
-    const storageRef = storage.ref();
-    return { storage, storageRef };
-}
-
 async function loadAssets(storageRef) {
     try {
         await Promise.all([
@@ -43,12 +15,13 @@ async function loadAssets(storageRef) {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('DOMContentLoaded', async () => {
     try {
+   
         const app = firebase.app();
         const storage = firebase.storage();
         const storageRef = storage.ref();
 
-        // Load all assets
         await Promise.all([
             loadLogo(storageRef),
             loadProfileImage(storageRef),
@@ -60,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error("Error initializing app:", error);
     }
+});
 });
 // Update asset loading functions to accept storageRef
 async function loadLogo(storageRef) {
