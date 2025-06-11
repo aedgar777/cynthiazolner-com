@@ -5,3 +5,5 @@ const config = {
         templateId: '__EMAILJS_TEMPLATE_ID__'
     }
 };
+
+window.config = config;
