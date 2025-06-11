@@ -1,25 +1,29 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-    
-        const loader = document.querySelector('.loader-container');
+     const loader = document.querySelector('.loader-container');
         
- 
+        const loaderTimeout = setTimeout(() => {
+            if (loader) {
+                loader.classList.add('loader-hidden');
+                loader.addEventListener('transitionend', () => {
+                    loader.remove();
+                });
+            }
+        }, 5000);
+
         const storage = firebase.storage();
         const storageRef = storage.ref();
-        
 
         await loadAssets(storageRef);
         
-    
-        loader.classList.add('loader-hidden');
+        clearTimeout(loaderTimeout);
         
-    
+        loader.classList.add('loader-hidden');
         loader.addEventListener('transitionend', () => {
             loader.remove();
         });
-        
-        // Initialize UI handlers
+         
         initializeFormHandling();
         initializeSmoothScrolling();
     } catch (error) {
@@ -78,11 +82,32 @@ async function loadSpecialtyIcons(storageRef) {
 }
 
 function initializeFormHandling() {
+    emailjs.init(config.emailjs.publicKey);
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            // Add form submission logic here
+            
+            // Add loading state
+            contactForm.classList.add('form-loading');
+            
+            try {
+                await emailjs.sendForm(
+                    config.emailjs.serviceId,
+                    config.emailjs.templateId,
+                    this
+                );
+                
+                showNotification('Message sent successfully!');
+                contactForm.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Failed to send message. Please try again.', false);
+            } finally {
+                // Remove loading state
+                contactForm.classList.remove('form-loading');
+            }
         });
     }
 }
