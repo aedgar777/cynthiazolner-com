@@ -1,14 +1,23 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Get the existing Firebase instance
+    
+        const loader = document.querySelector('.loader-container');
+        
+ 
         const storage = firebase.storage();
         const storageRef = storage.ref();
         
-        console.log('Firebase initialized successfully');
-        
-        // Load assets
+
         await loadAssets(storageRef);
+        
+    
+        loader.classList.add('loader-hidden');
+        
+    
+        loader.addEventListener('transitionend', () => {
+            loader.remove();
+        });
         
         // Initialize UI handlers
         initializeFormHandling();
@@ -17,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Error in initialization:", error);
     }
 });
+
 
 async function loadAssets(storageRef) {
     try {
