@@ -94,20 +94,34 @@ function initializeFormHandling() {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            // Add loading state
             contactForm.classList.add('form-loading');
             const formElements = contactForm.querySelectorAll('input, textarea, button');
             formElements.forEach(element => element.setAttribute('disabled', 'true'));
             
             try {
-                await emailjs.sendForm(
+                // Create template parameters explicitly
+                const templateParams = {
+                    from_name: document.getElementById('from_name').value,
+                    from_email: document.getElementById('from_email').value,
+                    phone: document.getElementById('phone').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
+
+                // Log the params for debugging
+                console.log('Sending email with params:', templateParams);
+
+                // Send using sendForm for better security
+                await emailjs.send(
                     config.emailjs.serviceId,
                     config.emailjs.templateId,
-                    this
+                    templateParams
                 );
                 
+                // Show success message
                 contactForm.style.display = 'none';
                 successMessage.style.display = 'block';
-             
                 setTimeout(() => {
                     successMessage.classList.add('show');
                 }, 50);
