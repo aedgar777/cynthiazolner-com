@@ -1,36 +1,21 @@
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-     const loader = document.querySelector('.loader-container');
-        
-        const loaderTimeout = setTimeout(() => {
-            if (loader) {
-                loader.classList.add('loader-hidden');
-                loader.addEventListener('transitionend', () => {
-                    loader.remove();
-                });
-            }
-        }, 5000);
+function showNotification(message, isSuccess = true) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
 
-        const storage = firebase.storage();
-        const storageRef = storage.ref();
 
-        await loadAssets(storageRef);
-        
-        clearTimeout(loaderTimeout);
-        
-        loader.classList.add('loader-hidden');
-        loader.addEventListener('transitionend', () => {
-            loader.remove();
+    notification.offsetHeight;
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+        notification.addEventListener('transitionend', () => {
+            notification.remove();
         });
-         
-        initializeFormHandling();
-        initializeSmoothScrolling();
-    } catch (error) {
-        console.error("Error in initialization:", error);
-    }
-});
-
+    }, 3000);
+}
 
 async function loadAssets(storageRef) {
     try {
@@ -81,16 +66,37 @@ async function loadSpecialtyIcons(storageRef) {
     }
 }
 
+function showNotification(message, isSuccess = true) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+
+    notification.offsetHeight;
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+        notification.addEventListener('transitionend', () => {
+            notification.remove();
+        });
+    }, 3000);
+}
+
 function initializeFormHandling() {
     emailjs.init(config.emailjs.publicKey);
 
     const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Add loading state
             contactForm.classList.add('form-loading');
+            const formElements = contactForm.querySelectorAll('input, textarea, button');
+            formElements.forEach(element => element.setAttribute('disabled', 'true'));
             
             try {
                 await emailjs.sendForm(
@@ -99,14 +105,20 @@ function initializeFormHandling() {
                     this
                 );
                 
-                showNotification('Message sent successfully!');
+                contactForm.style.display = 'none';
+                successMessage.style.display = 'block';
+             
+                setTimeout(() => {
+                    successMessage.classList.add('show');
+                }, 50);
+                
                 contactForm.reset();
             } catch (error) {
                 console.error('Error:', error);
                 showNotification('Failed to send message. Please try again.', false);
-            } finally {
-                // Remove loading state
+                // Re-enable form on error
                 contactForm.classList.remove('form-loading');
+                formElements.forEach(element => element.removeAttribute('disabled'));
             }
         });
     }
@@ -123,4 +135,37 @@ function initializeSmoothScrolling() {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+     const loader = document.querySelector('.loader-container');
+        
+        const loaderTimeout = setTimeout(() => {
+            if (loader) {
+                loader.classList.add('loader-hidden');
+                loader.addEventListener('transitionend', () => {
+                    loader.remove();
+                });
+            }
+        }, 5000);
+
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+
+        await loadAssets(storageRef);
+        
+        clearTimeout(loaderTimeout);
+        
+        loader.classList.add('loader-hidden');
+        loader.addEventListener('transitionend', () => {
+            loader.remove();
+        });
+         
+        initializeFormHandling();
+        initializeSmoothScrolling();
+    } catch (error) {
+        console.error("Error in initialization:", error);
+    }
+});
+
 

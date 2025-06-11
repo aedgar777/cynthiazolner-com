@@ -377,6 +377,64 @@ footer p {
     animation: spin 1s linear infinite;
 }
 
+.form-loading input,
+.form-loading textarea,
+.form-loading button {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-loading button {
+    position: relative;
+    color: transparent;  /* Hide button text while loading */
+}
+
+.form-loading button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.success-message {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.success-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-message h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
 .notification {
     position: fixed;
     bottom: 2rem;
