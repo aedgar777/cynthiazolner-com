@@ -1,4 +1,3 @@
-
 function showNotification(message, isSuccess = true) {
     const notification = document.createElement('div');
     notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
@@ -31,11 +30,21 @@ async function loadAssets(storageRef) {
 
 async function loadHeaderVideo(storageRef) {
     try {
-        const videoRef = storageRef.child('7569929953984734264.mp4');
-        const videoUrl = await videoRef.getDownloadURL();
         const videoElement = document.getElementById('headerVideo');
         if (videoElement) {
+            const videoRef = storageRef.child('7569929953984734264.mp4');
+            const videoUrl = await videoRef.getDownloadURL();
             videoElement.src = videoUrl;
+            
+            // Add loading feedback
+            videoElement.addEventListener('loadeddata', () => {
+                videoElement.style.opacity = '1';
+            });
+            
+            // Add error handling
+            videoElement.addEventListener('error', (e) => {
+                console.error('Error loading video:', e);
+            });
         }
     } catch (error) {
         console.error("Error loading header video:", error);
