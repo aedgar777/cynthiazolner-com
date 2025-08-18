@@ -460,29 +460,37 @@ footer p {
     transition: opacity 0.3s ease;
 }
 
-/* Control Bar Positioning */
+/* Control Bar Styling */
 #headerVideo::-webkit-media-controls-panel {
+    display: flex;
+    align-items: center;
     position: absolute;
     bottom: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
+    min-height: 40px;
 }
 
-/* Hide default play button */
-#headerVideo::-webkit-media-controls-overlay-play-button {
+/* Show play button in control bar */
+#headerVideo::-webkit-media-controls-play-button {
+    display: block;
+    opacity: 1;
+    min-width: 40px;
+    min-height: 40px;
+    margin: 0 5px;
+}
+
+/* Hide big center play button */
+#headerVideo::-webkit-media-controls-overlay-play-button,
+#headerVideo::-webkit-media-controls-start-playback-button {
     display: none;
 }
 
-/* Ensure controls stay at bottom */
-#headerVideo::-webkit-media-controls {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-/* Increase touch target size on mobile */
+/* Mobile optimizations */
 @media (max-width: 768px) {
     #headerVideo::-webkit-media-controls-panel {
         min-height: 50px;
+        padding: 0 10px;
     }
     
     #headerVideo::-webkit-media-controls-play-button {
