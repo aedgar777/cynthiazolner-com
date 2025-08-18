@@ -21,11 +21,24 @@ async function loadAssets(storageRef) {
     try {
         await Promise.all([
             loadLogo(storageRef),
-            loadProfileImage(storageRef),
-            loadSpecialtyIcons(storageRef)
+            loadSpecialtyIcons(storageRef),
+            loadHeaderVideo(storageRef) 
         ]);
     } catch (error) {
         console.error("Error loading assets:", error);
+    }
+}
+
+async function loadHeaderVideo(storageRef) {
+    try {
+        const videoRef = storageRef.child('7569929953984734264.mp4');
+        const videoUrl = await videoRef.getDownloadURL();
+        const videoElement = document.getElementById('headerVideo');
+        if (videoElement) {
+            videoElement.src = videoUrl;
+        }
+    } catch (error) {
+        console.error("Error loading header video:", error);
     }
 }
 
@@ -39,15 +52,7 @@ async function loadLogo(storageRef) {
     }
 }
 
-async function loadProfileImage(storageRef) {
-    try {
-        const profileRef = storageRef.child('pic2a(1).jpg');
-        const profileUrl = await profileRef.getDownloadURL();
-        document.querySelector('.profile-image img').src = profileUrl;
-    } catch (error) {
-        console.error("Error loading profile image:", error);
-    }
-}
+
 
 async function loadSpecialtyIcons(storageRef) {
     try {

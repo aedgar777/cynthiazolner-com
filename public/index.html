@@ -25,28 +25,31 @@
         <div class="loader"></div>
     </div>
     <header>
-        <nav>
-              <div class="logo">
+    <nav>
+        <div class="logo">
             <img src="images/logo.avif" alt="Cynthia Zolner">
         </div>
-            <ul>
-                <li><a href="#home">About</a></li>
-                <li><a href="#specialties">Specialties</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul>
+            <li><a href="#home">About</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                 <div class="profile-image">
-        <img src="" alt="Cynthia Zolner" data-profile="profile-image">
-    </div>
-                <h1>Cynthia Zolner, LCSW</h1>
-                <p>LCSW with 30 years+ of counseling experience. Now offering telehealth in Pennsylvania and California.</p>
+<main>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="video-container">
+                <video id="headerVideo" playsinline controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
-        </section>
+            <h1>Cynthia Zolner, LCSW</h1>
+            <p>LCSW with 30+ years of counseling experience. Now offering telehealth in Pennsylvania and California.</p>
+        </div>
+    </section>
 
         <section id="specialties" class="specialties">
     <h2>Specialties</h2>
@@ -80,13 +83,22 @@
                 
                 </div>
                 <form id="contactForm">
-                        <input type="text" name="from_name" id="from_name" data-emailjs="from_name"  placeholder="Name" required>
-                        <input type="email" name="from_email" id="from_email" data-emailjs="from_email" placeholder="Email" required>
-                        <input type="tel" name="phone" id="phone" data-emailjs="phone" placeholder="Phone">
-                        <input type="text" name="subject" id="subject" data-emailjs="subject" placeholder="Subject">
-                        <textarea name="message" placeholder="Message" id="message" data-emailjs="message" required></textarea>
-                        <button type="submit">Send Message</button>
-                </form>
+    <input type="text" name="from_name" id="from_name" data-emailjs="from_name" placeholder="Name" required>
+    <input type="email" name="from_email" id="from_email" data-emailjs="from_email" placeholder="Email" required>
+    <input 
+        type="tel" 
+        name="phone" 
+        id="phone" 
+        data-emailjs="phone" 
+        placeholder="Phone Number (required)" 
+        required 
+        pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" 
+        title="Please enter a valid US phone number. For example: (555) 555-5555 or 555-555-5555"
+    >
+    <input type="text" name="subject" id="subject" data-emailjs="subject" placeholder="Subject">
+    <textarea name="message" placeholder="Message" id="message" data-emailjs="message" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
 
                 <div id="successMessage" class="success-message" style="display: none;">
             <h3>Thank You!</h3>

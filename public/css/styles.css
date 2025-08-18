@@ -111,7 +111,6 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     color: white;
-    padding-top: 120px;
 }
 
 .hero-content {
@@ -433,6 +432,21 @@ footer p {
 .success-message p {
     font-size: 1.1rem;
     color: var(--text-color);
+}
+
+.video-container {
+    max-width: 1080px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+}
+
+#headerVideo {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .notification {
