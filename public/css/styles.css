@@ -439,6 +439,7 @@ footer p {
     color: var(--text-color);
 }
 
+/* Video Container Base Styles */
 .video-container {
     max-width: 405px; 
     margin: 2rem auto; 
@@ -460,41 +461,64 @@ footer p {
     transition: opacity 0.3s ease;
 }
 
-/* Control Bar Styling */
-#headerVideo::-webkit-media-controls-panel {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    min-height: 40px;
+/* Custom Control Bar Styling */
+#headerVideo::-webkit-media-controls {
+    display: flex !important;
 }
 
-/* Show play button in control bar */
+#headerVideo::-webkit-media-controls-enclosure {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+#headerVideo::-webkit-media-controls-panel {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+    width: 100%;
+    min-height: 50px;
+}
+
+/* Force play button to show */
 #headerVideo::-webkit-media-controls-play-button {
-    display: block;
-    opacity: 1;
-    min-width: 40px;
-    min-height: 40px;
+    display: flex !important;
+    opacity: 1 !important;
+    min-width: 44px;
+    min-height: 44px;
     margin: 0 5px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Hide big center play button */
-#headerVideo::-webkit-media-controls-overlay-play-button,
-#headerVideo::-webkit-media-controls-start-playback-button {
+#headerVideo::-webkit-media-controls-overlay-play-button {
     display: none;
+}
+
+/* Ensure proper spacing for other controls */
+#headerVideo::-webkit-media-controls-timeline {
+    margin: 0 10px;
 }
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
+    #headerVideo::-webkit-media-controls-enclosure {
+        min-height: 55px;
+    }
+    
     #headerVideo::-webkit-media-controls-panel {
-        min-height: 50px;
-        padding: 0 10px;
+        padding: 0 12px;
     }
     
     #headerVideo::-webkit-media-controls-play-button {
-        min-width: 44px;
-        min-height: 44px;
+        min-width: 48px;
+        min-height: 48px;
     }
 }
