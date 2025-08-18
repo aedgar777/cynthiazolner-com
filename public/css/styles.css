@@ -440,9 +440,9 @@ footer p {
 }
 
 .video-container {
-    max-width: 540px;
-    margin: 0 auto;
-    padding: 1rem;
+    max-width: 405px; /* Reduced from 540px (25% smaller) */
+    margin: 2rem auto; /* Added margin top and bottom */
+    padding: 1.5rem;
     aspect-ratio: 9/16;
     background: var(--light-bg);
     border-radius: 12px;
@@ -455,4 +455,19 @@ footer p {
     object-fit: cover;
     border-radius: 8px;
     background: transparent;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth fade in */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-container {
+        max-width: 70vw; /* Adjust for smaller screens */
+        padding: 1rem;
+        margin: 1.5rem auto;
+    }
+    
+    .hero {
+        padding: 100px 1rem 3rem;
+    }
 }
