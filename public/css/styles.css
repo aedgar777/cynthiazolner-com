@@ -447,19 +447,7 @@ footer p {
     background: var(--light-bg);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.video-container video::-webkit-media-controls-start-playback-button {
-    display: none;
-}
-
-.video-container video::-webkit-media-controls-play-button {
-    display: none;
-}
-
-/* For Firefox */
-.video-container video::-moz-media-controls-overlay-play-button {
-    display: none;
+    position: relative;
 }
 
 #headerVideo {
@@ -470,25 +458,35 @@ footer p {
     background: transparent;
     opacity: 0;
     transition: opacity 0.3s ease;
-    -webkit-tap-highlight-color: transparent; 
 }
 
-
-@media (max-width: 768px) {
-    .video-container video::-webkit-media-controls-panel {
-        height: 40px;
-    }
+/* Control Bar Positioning */
+#headerVideo::-webkit-media-controls-panel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive adjustments */
+/* Hide default play button */
+#headerVideo::-webkit-media-controls-overlay-play-button {
+    display: none;
+}
+
+/* Ensure controls stay at bottom */
+#headerVideo::-webkit-media-controls {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/* Increase touch target size on mobile */
 @media (max-width: 768px) {
-    .video-container {
-        max-width: 70vw; /* Adjust for smaller screens */
-        padding: 1rem;
-        margin: 1.5rem auto;
+    #headerVideo::-webkit-media-controls-panel {
+        min-height: 50px;
     }
     
-    .hero {
-        padding: 100px 1rem 3rem;
+    #headerVideo::-webkit-media-controls-play-button {
+        min-width: 44px;
+        min-height: 44px;
     }
 }
