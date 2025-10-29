@@ -348,6 +348,28 @@ footer p {
     font-size: 0.9rem;
 }
 
+/* Mobile footer adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 2rem 1rem;
+        padding-left: 1rem; /* Remove extra left padding on mobile */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    footer .sx-verified-seal {
+        position: static;
+        transform: none;
+        order: 2; /* Place badge after copyright */
+    }
+    
+    footer p {
+        order: 1; /* Place copyright first */
+    }
+}
+
 @media (max-width: 768px) {
     .logo img {
         max-width: 40px;
