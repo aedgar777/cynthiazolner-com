@@ -330,16 +330,14 @@ footer {
     text-align: center;
     background: var(--light-bg);
     padding: 2rem;
-    position: relative; /* allow absolutely positioned badge */
-    padding-left: 120px; /* space for the badge on the left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 /* Psychology Today badge positioning */
 footer .sx-verified-seal {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
     display: inline-block;
 }
 
