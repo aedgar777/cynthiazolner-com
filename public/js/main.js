@@ -64,19 +64,25 @@ async function loadLogo(storageRef) {
 
 
 async function loadSpecialtyIcons(storageRef) {
-    try {
-        const icons = document.querySelectorAll('.specialty-icon img');
-        for (const icon of icons) {
-            const iconName = icon.dataset.icon;
+    const icons = document.querySelectorAll('#specialties img[data-icon]');
 
-            console.log('Loading icon:', iconName);
+    for (const icon of icons) {
+        const iconName = icon.dataset.icon;
+        if (!iconName) continue;
 
+        try {
             const iconRef = storageRef.child(`${iconName}.jpg`);
             const iconUrl = await iconRef.getDownloadURL();
             icon.src = iconUrl;
+        } catch (jpgError) {
+            try {
+                const fallbackRef = storageRef.child(`${iconName}.avif`);
+                const fallbackUrl = await fallbackRef.getDownloadURL();
+                icon.src = fallbackUrl;
+            } catch (fallbackError) {
+                console.error(`Error loading specialty icon "${iconName}":`, fallbackError);
+            }
         }
-    } catch (error) {
-        console.error("Error loading specialty icons:", error);
     }
 }
 
