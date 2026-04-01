@@ -65,23 +65,28 @@ async function loadLogo(storageRef) {
 
 async function loadSpecialtyIcons(storageRef) {
     const icons = document.querySelectorAll('#specialties img[data-icon]');
+    const extensions = ['jpg', 'jpeg', 'avif', 'png', 'webp'];
 
     for (const icon of icons) {
         const iconName = icon.dataset.icon;
         if (!iconName) continue;
 
-        try {
-            const iconRef = storageRef.child(`${iconName}.jpg`);
-            const iconUrl = await iconRef.getDownloadURL();
-            icon.src = iconUrl;
-        } catch (jpgError) {
+        let loaded = false;
+
+        for (const ext of extensions) {
             try {
-                const fallbackRef = storageRef.child(`${iconName}.avif`);
-                const fallbackUrl = await fallbackRef.getDownloadURL();
-                icon.src = fallbackUrl;
-            } catch (fallbackError) {
-                console.error(`Error loading specialty icon "${iconName}":`, fallbackError);
+                const iconRef = storageRef.child(`${iconName}.${ext}`);
+                const iconUrl = await iconRef.getDownloadURL();
+                icon.src = iconUrl;
+                loaded = true;
+                break;
+            } catch (error) {
+                // Try next extension silently
             }
+        }
+
+        if (!loaded) {
+            console.error(`Error loading specialty icon "${iconName}": no supported file found (${extensions.join(', ')})`);
         }
     }
 }
