@@ -167,6 +167,7 @@ section {
     isolation: isolate;
     display: flex;
     align-items: flex-end;
+    box-shadow: inset 0 0 0 3px var(--light-bg);
 }
 
 .bento-item img {
