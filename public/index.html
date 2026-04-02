@@ -13,9 +13,8 @@
     <script defer src="/__/firebase/10.7.0/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/10.7.0/firebase-storage-compat.js"></script>
     <script defer src="/__/firebase/init.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="js/config.js?v=2026-04-01-2"></script>
-    <script defer src="js/main.js?v=2026-04-01-2"></script>
+    <script defer src="js/config.js?v=2026-04-02-1"></script>
+    <script defer src="js/main.js?v=2026-04-02-1"></script>
 </head>
 
 <body>
@@ -26,7 +25,7 @@
     <header>
     <nav>
         <div class="logo">
-            <img src="images/logo.avif" alt="Cynthia Zolner">
+            <img src="images/logo.avif" alt="Cynthia Zolner" fetchpriority="high" decoding="async" width="50" height="50">
         </div>
         <ul>
             <li><a href="#home">About</a></li>
@@ -44,7 +43,7 @@
                     id="headerVideo" 
                     playsinline 
                     controls="controls" 
-                    preload="auto"
+                    preload="metadata"
                     controlslist="nodownload"
                 >
                     <source src="" type="video/mp4">
@@ -60,56 +59,56 @@
 
     <div class="specialties-grid bento-grid" aria-label="Specialties bento grid">
         <article class="bento-item">
-            <img src="" alt="Couples Therapy" data-icon="pexels-min-an-1004014">
+            <img src="" alt="Couples Therapy" data-icon="pexels-min-an-1004014" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Couples Therapy</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Depression" data-icon="pexels-ave-calvar-martinez-4297438">
+            <img src="" alt="Depression" data-icon="pexels-ave-calvar-martinez-4297438" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Depression</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Grief" data-icon="grief">
+            <img src="" alt="Grief" data-icon="grief" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Grief and Trauma</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Pregnancy and Postpartum" data-icon="pregnancy">
+            <img src="" alt="Pregnancy and Postpartum" data-icon="pregnancy" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Pregnancy and Postpartum</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Anxiety & Stress Management" data-icon="stress_icon">
+            <img src="" alt="Anxiety & Stress Management" data-icon="stress_icon" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Anxiety and Stress Management</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Life Transitions" data-icon="transition">
+            <img src="" alt="Life Transitions" data-icon="transition" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Life Transitions</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Health and Weight Loss" data-icon="weight-loss">
+            <img src="" alt="Health and Weight Loss" data-icon="weight-loss" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Health and Weight Loss</h3>
             </div>
         </article>
 
         <article class="bento-item">
-            <img src="" alt="Obsessive-Compulsive Disorder" data-icon="ocd">
+            <img src="" alt="Obsessive-Compulsive Disorder" data-icon="ocd" loading="lazy" decoding="async">
             <div class="bento-overlay">
                 <h3>Obsessive-Compulsive Disorder</h3>
             </div>
@@ -157,7 +156,7 @@
         </div>
          <!-- Professional verification provided by Psychology Today -->
          <a href="https://www.psychologytoday.com/profile/104214" class="sx-verified-seal" aria-label="Psychology Today Verified"></a>
-         <script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="13" data-id="104214" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy8xMy9wcm9maWxlLzEwNDIxND9jYWxsYmFjaz1zeGNhbGxiYWNr"></script>
+         <script defer type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="13" data-id="104214" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy8xMy9wcm9maWxlLzEwNDIxND9jYWxsYmFjaz1zeGNhbGxiYWNr"></script>
          <!-- End Verification -->
         <p>&copy; 2025 Cynthia Zolner. All rights reserved.</p>
      </footer>
