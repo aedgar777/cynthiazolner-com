@@ -1,0 +1,13 @@
+{
+  "bucket": "cynthiazolner-com.firebasestorage.app",
+  "icons": {
+    "pexels-min-an-1004014": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/pexels-min-an-1004014.jpg?alt=media",
+    "pexels-ave-calvar-martinez-4297438": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/pexels-ave-calvar-martinez-4297438.jpg?alt=media",
+    "grief": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/grief.jpeg?alt=media",
+    "pregnancy": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/pregnancy.jpeg?alt=media",
+    "stress_icon": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/stress_icon.jpg?alt=media",
+    "transition": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/transition.jpeg?alt=media",
+    "weight-loss": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/weight-loss.jpeg?alt=media",
+    "ocd": "https://firebasestorage.googleapis.com/v0/b/cynthiazolner-com.firebasestorage.app/o/ocd.jpeg?alt=media"
+  }
+}
