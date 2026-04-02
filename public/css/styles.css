@@ -221,35 +221,43 @@ section {
 
 /* Desktop collage map: full 12x8 rectangle with no gaps */
 .bento-item--couples {
-    grid-area: 1 / 1 / 4 / 8;
+    grid-area: 1 / 1 / 4 / 7;
 }
 
 .bento-item--depression {
-    grid-area: 1 / 8 / 3 / 11;
+    grid-area: 1 / 7 / 3 / 10;
 }
 
 .bento-item--grief {
-    grid-area: 1 / 11 / 6 / 13;
+    grid-area: 1 / 10 / 6 / 13;
 }
 
 .bento-item--pregnancy {
-    grid-area: 4 / 1 / 6 / 8;
+    grid-area: 4 / 1 / 6 / 7;
 }
 
 .bento-item--anxiety {
-    grid-area: 3 / 8 / 7 / 11;
+    grid-area: 3 / 7 / 7 / 10;
+}
+
+.bento-item--parenting {
+    grid-area: 6 / 1 / 8 / 5;
+}
+
+.bento-item--women {
+    grid-area: 6 / 5 / 8 / 7;
 }
 
 .bento-item--transitions {
-    grid-area: 6 / 1 / 9 / 8;
+    grid-area: 8 / 1 / 9 / 7;
 }
 
 .bento-item--health {
-    grid-area: 7 / 8 / 9 / 11;
+    grid-area: 7 / 7 / 9 / 10;
 }
 
 .bento-item--ocd {
-    grid-area: 6 / 11 / 9 / 13;
+    grid-area: 6 / 10 / 9 / 13;
 }
 
 @media (max-width: 1200px) {
@@ -264,35 +272,43 @@ section {
     }
 
     .bento-item--couples {
-        grid-area: 1 / 1 / 4 / 5;
+        grid-area: 1 / 1 / 4 / 4;
     }
 
     .bento-item--depression {
-        grid-area: 1 / 5 / 3 / 7;
+        grid-area: 1 / 4 / 3 / 6;
     }
 
     .bento-item--grief {
-        grid-area: 3 / 5 / 7 / 7;
+        grid-area: 1 / 6 / 5 / 7;
     }
 
     .bento-item--pregnancy {
-        grid-area: 4 / 1 / 6 / 5;
+        grid-area: 4 / 1 / 6 / 4;
     }
 
     .bento-item--anxiety {
-        grid-area: 6 / 1 / 9 / 4;
+        grid-area: 3 / 4 / 7 / 6;
+    }
+
+    .bento-item--parenting {
+        grid-area: 5 / 6 / 7 / 7;
+    }
+
+    .bento-item--women {
+        grid-area: 6 / 1 / 8 / 3;
     }
 
     .bento-item--transitions {
-        grid-area: 6 / 4 / 9 / 5;
+        grid-area: 8 / 1 / 11 / 4;
     }
 
     .bento-item--health {
-        grid-area: 7 / 5 / 9 / 7;
+        grid-area: 6 / 3 / 8 / 4;
     }
 
     .bento-item--ocd {
-        grid-area: 9 / 1 / 11 / 7;
+        grid-area: 7 / 4 / 11 / 7;
     }
 }
 
@@ -303,8 +319,8 @@ section {
 
     .bento-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(16, minmax(72px, 1fr));
-        aspect-ratio: 2 / 16;
+        grid-template-rows: repeat(20, minmax(72px, 1fr));
+        aspect-ratio: 2 / 20;
     }
 
     .bento-item--couples {
@@ -327,16 +343,24 @@ section {
         grid-area: 8 / 1 / 11 / 3;
     }
 
+    .bento-item--parenting {
+        grid-area: 11 / 1 / 13 / 2;
+    }
+
+    .bento-item--women {
+        grid-area: 11 / 2 / 13 / 3;
+    }
+
     .bento-item--transitions {
-        grid-area: 11 / 1 / 14 / 2;
+        grid-area: 13 / 1 / 16 / 2;
     }
 
     .bento-item--health {
-        grid-area: 11 / 2 / 14 / 3;
+        grid-area: 13 / 2 / 16 / 3;
     }
 
     .bento-item--ocd {
-        grid-area: 14 / 1 / 17 / 3;
+        grid-area: 16 / 1 / 21 / 3;
     }
 
     .bento-overlay h3 {
