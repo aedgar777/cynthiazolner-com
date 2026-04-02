@@ -237,7 +237,7 @@ section {
 }
 
 .bento-item--transitions {
-    grid-area: 6 / 1 / 9 / 6;
+    grid-area: 6 / 1 / 9 / 8;
 }
 
 .bento-item--health {
@@ -245,7 +245,7 @@ section {
 }
 
 .bento-item--ocd {
-    grid-area: 7 / 11 / 9 / 13;
+    grid-area: 6 / 11 / 9 / 13;
 }
 
 @media (max-width: 1200px) {
