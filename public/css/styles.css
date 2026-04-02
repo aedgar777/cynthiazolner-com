@@ -148,26 +148,17 @@ section {
 }
 
 .bento-grid {
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(80px, 1fr));
+    gap: 1rem;
     margin: 0 auto;
-}
-
-.bento-grid::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.bento-grid-sizer,
-.bento-item {
-    width: calc((100% - 1rem) / 2);
+    aspect-ratio: 12 / 8;
 }
 
 .bento-item {
     position: relative;
-    float: left;
-    margin-bottom: 1rem;
-    min-height: 220px;
+    min-height: 0;
     overflow: hidden;
     border-radius: 18px;
     isolation: isolate;
@@ -224,22 +215,37 @@ section {
     line-height: 1.45;
 }
 
-/* Masonry card size variants */
-.bento-item--wide {
-    width: 100%;
-    min-height: 360px;
+/* Desktop collage map: full 12x8 rectangle with no gaps */
+.bento-item--couples {
+    grid-area: 1 / 1 / 4 / 8;
 }
 
-.bento-item--tall {
-    min-height: 360px;
+.bento-item--depression {
+    grid-area: 1 / 8 / 3 / 11;
 }
 
-.bento-item--short {
-    min-height: 220px;
+.bento-item--grief {
+    grid-area: 1 / 11 / 6 / 13;
 }
 
-.bento-item--medium {
-    min-height: 280px;
+.bento-item--pregnancy {
+    grid-area: 4 / 1 / 6 / 8;
+}
+
+.bento-item--anxiety {
+    grid-area: 3 / 8 / 7 / 11;
+}
+
+.bento-item--transitions {
+    grid-area: 6 / 1 / 9 / 6;
+}
+
+.bento-item--health {
+    grid-area: 7 / 8 / 9 / 11;
+}
+
+.bento-item--ocd {
+    grid-area: 7 / 11 / 9 / 13;
 }
 
 @media (max-width: 1200px) {
@@ -247,16 +253,42 @@ section {
         max-width: 1000px;
     }
 
-    .bento-grid-sizer,
-    .bento-item {
-        width: 100%;
+    .bento-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: repeat(10, minmax(72px, 1fr));
+        aspect-ratio: 6 / 10;
     }
 
-    .bento-item--wide,
-    .bento-item--tall,
-    .bento-item--short,
-    .bento-item--medium {
-        min-height: 260px;
+    .bento-item--couples {
+        grid-area: 1 / 1 / 4 / 5;
+    }
+
+    .bento-item--depression {
+        grid-area: 1 / 5 / 3 / 7;
+    }
+
+    .bento-item--grief {
+        grid-area: 3 / 5 / 7 / 7;
+    }
+
+    .bento-item--pregnancy {
+        grid-area: 4 / 1 / 6 / 5;
+    }
+
+    .bento-item--anxiety {
+        grid-area: 6 / 1 / 9 / 4;
+    }
+
+    .bento-item--transitions {
+        grid-area: 6 / 4 / 9 / 5;
+    }
+
+    .bento-item--health {
+        grid-area: 7 / 5 / 9 / 7;
+    }
+
+    .bento-item--ocd {
+        grid-area: 9 / 1 / 11 / 7;
     }
 }
 
@@ -265,20 +297,42 @@ section {
         padding: 0.25rem;
     }
 
-    .bento-grid-sizer,
-    .bento-item {
-        width: 100%;
+    .bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(16, minmax(72px, 1fr));
+        aspect-ratio: 2 / 16;
     }
 
-    .bento-item {
-        min-height: 220px;
+    .bento-item--couples {
+        grid-area: 1 / 1 / 4 / 3;
     }
 
-    .bento-item--wide,
-    .bento-item--tall,
-    .bento-item--short,
-    .bento-item--medium {
-        min-height: 220px;
+    .bento-item--depression {
+        grid-area: 4 / 1 / 6 / 2;
+    }
+
+    .bento-item--grief {
+        grid-area: 4 / 2 / 8 / 3;
+    }
+
+    .bento-item--pregnancy {
+        grid-area: 6 / 1 / 8 / 2;
+    }
+
+    .bento-item--anxiety {
+        grid-area: 8 / 1 / 11 / 3;
+    }
+
+    .bento-item--transitions {
+        grid-area: 11 / 1 / 14 / 2;
+    }
+
+    .bento-item--health {
+        grid-area: 11 / 2 / 14 / 3;
+    }
+
+    .bento-item--ocd {
+        grid-area: 14 / 1 / 17 / 3;
     }
 
     .bento-overlay h3 {

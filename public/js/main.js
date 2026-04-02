@@ -349,60 +349,16 @@ function initializeSmoothScrolling() {
     });
 }
 
-function debounce(callback, delay = 150) {
-    let timeoutId;
-
-    return (...args) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            callback(...args);
-        }, delay);
-    };
-}
-
-function initializeBentoMasonry() {
-    const bentoGrid = document.querySelector('.bento-grid');
-    if (!bentoGrid || typeof window.Masonry !== 'function') {
-        return null;
-    }
-
-    const masonry = new Masonry(bentoGrid, {
-        itemSelector: '.bento-item',
-        columnWidth: '.bento-grid-sizer',
-        percentPosition: true,
-        gutter: 16,
-        transitionDuration: 0
-    });
-
-    const relayout = debounce(() => {
-        masonry.layout();
-    }, 120);
-
-    if (typeof window.imagesLoaded === 'function') {
-        imagesLoaded(bentoGrid).on('progress', relayout).on('always', () => {
-            masonry.layout();
-        });
-    }
-
-    window.addEventListener('resize', relayout, { passive: true });
-
-    return masonry;
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
     initializeSmoothScrolling();
     initializeFormHandling();
 
-    const masonry = initializeBentoMasonry();
     const storageRef = getStorageRefIfAvailable();
 
     try {
         await setupSpecialtiesLoading(storageRef);
     } finally {
-        masonry?.layout();
-
         requestAnimationFrame(() => {
-            masonry?.layout();
             hideLoader();
         });
     }
