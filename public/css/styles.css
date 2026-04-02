@@ -151,18 +151,19 @@ section {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: repeat(8, minmax(80px, 1fr));
-    gap: 0;
+    gap: 0.35rem;
     margin: 0 auto;
     aspect-ratio: 12 / 8;
     overflow: hidden;
     border-radius: 18px;
+    background: var(--light-bg);
 }
 
 .bento-item {
     position: relative;
     min-height: 0;
     overflow: hidden;
-    border-radius: 0;
+    border-radius: 10px;
     isolation: isolate;
     display: flex;
     align-items: flex-end;
